@@ -14,51 +14,46 @@ class App extends Component {
   };
 
   render() {
-    const {store} = this.props
+    const { store } = this.props
+    let newArr = store.participants.filter(participant => {
+      return participant.onStage
+    });
+   
     return (
-    <main>
-    <section class="participantList">
-    {store.participants.map(participants => (
+      <main className="testowl">
+        <section className="participantList">
+          {store.participants.map(participants => (
             <Participants
               name={participants.name}
               avatar={participants.avatar}
-              inSession={participants.inSession}
-              onStrage={participants.onStage}
+              inSession={toString(participants.inSession)}
+              onStage={participants.onStage}
             />
           ))}
-    </section>
+        </section>
 
-    <section className="chatLog hidden">
-    {store.chatEvents.map(chatEvents => (
+        <section className="chatLog hidden">
+          {store.chatEvents.map(chatEvents => (
             <Chatlog
               type={chatEvents.type}
               message={chatEvents.message}
               timestamp={chatEvents.timestamp}
             />
           ))}
-    </section>
-    
-    <section class="stage">
-    {store.participants.map(participants => (
-            <Stage
-              avatar={participants.avatar}
-              name={participants.name}
+        </section>
 
-            />
-          ))} 
-    </section>
+        <section className="stage">
+          {newArr.map(participants => (
+              <Stage
+                avatar={participants.avatar}
+                name={participants.name}
+                />
+            ))}
+        </section>
 
-    </main>
+      </main>
     );
   }
 }
 
 export default App;
-
-
-// {store.participants.map(participants => (
-//   <Stage
-//     avatar={participants.avatar}
-//     name={participants.name}
-//   />
-// ))} 
