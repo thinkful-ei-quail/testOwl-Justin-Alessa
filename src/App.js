@@ -43,7 +43,7 @@ class App extends Component {
             <Stage
               avatar={participants.avatar}
               name={participants.name}
-              
+
             />
           ))} 
     </section>
@@ -54,3 +54,11 @@ class App extends Component {
 }
 
 export default App;
+
+
+// {store.participants.map(participants => (
+//   <Stage
+//     avatar={participants.avatar}
+//     name={participants.name}
+//   />
+// ))} 
