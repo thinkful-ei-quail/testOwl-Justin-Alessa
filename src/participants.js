@@ -1,8 +1,13 @@
+import React from 'react';
 
-function participants(props){
-  return(
-    <div className="participantList">
-      
+export default function Participants(props) {
+  return (
+    <div>
+      <p>{props.name}</p>
+      <img src={props.avatar} alt="avatar" />
+      <p>{props.inSession}</p>
+      <p>{props.onStage}</p>
     </div>
   )
 }
+

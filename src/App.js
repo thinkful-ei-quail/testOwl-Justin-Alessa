@@ -1,29 +1,49 @@
 import React, { Component } from 'react';
-import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import Participants from './participants';
+import Chatlog from './chatlog';
+import Stage from './stage';
 
 class App extends Component {
   static defaultProps = {
     store: {
-      particpants: [],
+      participants: [],
       chatEvents: [],
     }
   };
 
-  function App() {
+  render() {
+    const {store} = this.props
     return (
+      <main>
     <section class="participantList">
-
+    {store.participants.map(participants => (
+            <Participants
+            name={participants.name}/>
+          ))}
     </section>
 
-    <section class="chatLog hidden">
-
+    <section className="chatLog hidden">
+    {store.chatEvents.map(chatEvents => (
+            <Chatlog
+              type={chatEvents.type}
+              message={chatEvents.message}
+              timestamp={chatEvents.timestamp}
+            />
+          ))}
     </section>
     
-    <section class="stage">
-
-    </section>
+    {/* <section class="stage">
+    {store.participants.map(participants => (
+            <Stage
+              avatar={participants.avatar}
+              name={participants.name}
+            
+            />
+          ))} 
+    </section>*/}
+    </main>
     );
   }
 }
