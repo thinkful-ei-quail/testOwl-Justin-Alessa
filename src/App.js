@@ -16,11 +16,15 @@ class App extends Component {
   render() {
     const {store} = this.props
     return (
-      <main>
+    <main>
     <section class="participantList">
     {store.participants.map(participants => (
             <Participants
-            name={participants.name}/>
+              name={participants.name}
+              avatar={participants.avatar}
+              inSession={participants.inSession}
+              onStrage={participants.onStage}
+            />
           ))}
     </section>
 
@@ -34,15 +38,16 @@ class App extends Component {
           ))}
     </section>
     
-    {/* <section class="stage">
+    <section class="stage">
     {store.participants.map(participants => (
             <Stage
               avatar={participants.avatar}
               name={participants.name}
-            
+              
             />
           ))} 
-    </section>*/}
+    </section>
+
     </main>
     );
   }
